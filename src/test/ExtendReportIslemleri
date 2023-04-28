@@ -1,0 +1,55 @@
+ExtendReport islemleri
+
+1- POM.xml e dependency eklenir
+<dependency>
+    <groupId>tech.grasshopper</groupId>
+    <artifactId>extentreports-cucumber7-adapter</artifactId>
+    <version>1.2.0</version>
+</dependency>
+
+
+2-Plugin cucumber options a eklenir
+plugin = {"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"}
+
+3- driver a ing karakterler icin kod eklenir
+Locale.setDefault(new Locale("EN"));
+System.setProperty("user.language" , "EN")
+
+4- extent.properties dosyasini -> src/resources/test uzantisinda olusturun ve icine alttaki komutlari yazin
+extent.reporter.spark.start=true
+extent.reporter.spark.out=test-output/SparkReport/Spark.html
+
+5- Rapora ss eklenmesi icin
+    5- Rapora Screenshot eklenmesi için
+           https://www.programsbuzz.com/article/how-add-screenshot-cucumber-extent-report-every-step
+           https://qaautomation.expert/2022/08/10/how-to-add-screenshot-to-cucumber-extentreports/
+
+      a) Hooks a aşağıdaki eklendi
+
+          if (senaryo.isFailed()){
+                      TakesScreenshot ts=(TakesScreenshot) GWD.getDriver();
+                      byte[] hafizadakiHali=ts.getScreenshotAs(OutputType.BYTES);
+                      senaryo.attach(hafizadakiHali, "image/png","screen shot");
+                  }
+
+      b)extends.properties e aşağıdaki bölüm eklendi
+            #screenshot folder and src settings
+            screenshot.dir=test-output/screenshots/
+            screenshot.rel.path=../screenshots/
+
+6-   Reportun PDF çıktısı için
+        https://www.programsbuzz.com/article/extent-pdf-report-cucumber-testng
+        extends.properties e aşağıdaki bölüm eklendi
+
+            #PDF Report
+            extent.reporter.pdf.start=true
+            extent.reporter.pdf.out=PdfReport.pdf
+
+7- Her raporun ayri olmasi icin
+    Asagidaki kod extent.properties e eklendi
+
+    #Foldername
+    basefolder.name=Test Reports/TestReport
+    basefolder.dateimepattern=d-MMM-YY HH.mm.ss
+
+8- runner class i calistir

@@ -1,0 +1,30 @@
+Maven
+1- Yeni proje tiklattim -> Proje Tipi olarak MAVEN
+   secildi. Standart sonlandirildi
+
+2- Klasor yapisini inceledik:
+   main -> Developer in source kodlari
+   test -> Tester' in kodlari
+
+3- Maven'in verdigi duzenli yapinin kendi tarafimizda ,
+   bizde kendi duzenli klasor yapimizi olusturacagiz.
+   Klasorler ;
+
+   FeatureFiles     -> Senaryolarimizin oldugu klasor
+   StepDefinitions  -> Senaryolarin calisan adimlari - metodlari burda olacak
+   Pages            -> Page Object Model safyalarimiz POM (@FindBy)
+   Utilities        -> Driver ve diger tekrar kullanilacak metodlarimiz
+   Runners          -> Calistiricilar
+
+4- Ayarlar
+   A) Intellij Editor ayarlari
+      2 tane plugin ekleyecegiz
+        1- Cucumber for Java
+        2- Gherkin Language -> https://cucumber.io/docs/gherkin/reference/#keywords
+
+   B) POM.xml -> Project Object Model Ayarlari
+
+        Selenium
+        testNG
+        Cucumber
+        Cucumber-Testng birlestiren lib
