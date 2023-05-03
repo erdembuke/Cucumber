@@ -10,7 +10,8 @@ import io.cucumber.testng.CucumberOptions;
          olan etiketler çalıyor
          */
         features = {"src/test/java/FeatureFiles"} ,
-        glue = {"StepDefinitions"}
+        glue = {"StepDefinitions"},
+        plugin= {"json:target/cucumber/cucumber.json"}
 )
 public class _05_TestRunnerRegression {
 }
